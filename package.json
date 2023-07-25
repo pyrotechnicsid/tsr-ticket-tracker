@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
+    "concurrently": "^8.2.0",
     "dotenv": "^16.3.1",
     "mysql": "^2.18.1",
     "node": "^20.5.0",
@@ -23,7 +24,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start-server": "node server.js && npm start"
+    "start-server": "node server.js && npm start",
+    "dev": "concurrently \"npm start\" \"node server.js\""
   },
   "eslintConfig": {
     "extends": [
