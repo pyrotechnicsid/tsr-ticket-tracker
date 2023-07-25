@@ -1,18 +1,11 @@
 // server.js
 const express = require('express');
 const mysql = require('mysql');
+require('dotenv').config()
 
 const app = express();
-
-const db = mysql.createConnection({
-  DB_CONNECTION: mysql,
-  host: 'aws.connect.psdb.cloud',
-  user: '757j21mpb1gvynjajv34',
-  password: 'pscale_pw_aLpJc4v0H39EK9HYI3VVGwoaX2Z1i7n7NbMFrA6Jlqs',
-  database: 'test',
-  ssl: {}
-}
-);
+const db = mysql.createConnection(process.env.DATABASE_URL)
+console.log('Connected to Database!')
 
 // Connect to MySQL
 db.connect((err) => {
@@ -24,13 +17,6 @@ db.connect((err) => {
 });
 
 app.use(express.json());
-
-// app.post('/api/add-ticket', (req, res) => {
-//   const { ticketNumber, techName } = req.body;
-//   const sql = 'INSERT INTO tickets (ticket_number, tech_name) VALUES (?, ?)';
-//   
-//   });
-// });
 
 app.get('/api/currentstatus', (req, res) => {
   const sql = 'SELECT * FROM current_status';
