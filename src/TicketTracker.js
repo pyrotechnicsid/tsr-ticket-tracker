@@ -9,10 +9,11 @@ const TicketTracker = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/add-ticket', {
-        ticketNumber,
-        techName,
-      });
+      const response = await axios.get('/api/currentstatus');
+      // const response = await axios.get('/api/currentstatus', {
+      //   // ticketNumber,
+      //   // techName,
+      // });
       console.log(response.data);
       // Perform any additional actions or display success messages as needed.
     } catch (error) {
